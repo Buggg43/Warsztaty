@@ -1,0 +1,10 @@
+1. Aplikacja konsolowa
+2. Dwie biblioteki One i Two
+3. Biblioteka kontraktowa: Contracts
+4. Biblioteki One i Two nie posiadaj¹ do siebie wzajemnych refenrencji. Obie ³aduj¹ bilbiotekê kontraktów
+5. Obie biblioteki posiadaj¹ klasy, które implementuj¹ interfejs pozwalaj¹cy je zatrzymywaæ i uruchamiaæ
+6. Konstrukturoy s¹ wywo³ywane w klasie g³ównej programu
+7. Komunikat zak³ada przesy³anie inforamcji z wykorzystaniem wzorca projektowego, którego implementacja uwzglêdnia generycznoœæ
+8. Zadanie uznaje siê za zakoñczone, je¿eli:
+- na konsoli zostan¹ wypisane informacje przes³ane dwukierunkowo: z One do Two oraz z Two do One
+- zostan¹ zaimplementowane minimum 3 wzorce projektowe

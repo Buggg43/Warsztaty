@@ -2,35 +2,36 @@
 
 namespace Two
 {
-    public class ModuleTwoWithStrategy : IModule, IMessageHandler<string>
+    public class ModuleTwo : IModule, IMessageHandler<string>
     {
         private readonly IMessageBroker<string> _broker;
-        private readonly IMessageProcessingStrategy _strategy;
 
-        public ModuleTwoWithStrategy(IMessageBroker<string> broker, IMessageProcessingStrategy strategy)
+        public ModuleTwo(IMessageBroker<string> broker)
         {
             _broker = broker;
-            _strategy = strategy;
+            // Rejestrujemy się w brokerze od razu po utworzeniu instancji:
             _broker.Subscribe(this);
         }
 
         public void Start()
         {
-            Console.WriteLine("[Two-Strat] Uruchamiam moduł TwoWithStrategy");
-            var msg = "Hi from TwoWithStrategy!";
-            Console.WriteLine($"[Two-Strat] Wysyłam: {msg}");
-            _broker.Publish(msg);
+            Console.WriteLine("[Two] Uruchamiam moduł Two");
+            var message = "Hi from Two!";
+            Console.WriteLine($"[Two] Wysyłam do brokera: {message}");
+            _broker.Publish(message);
         }
 
         public void Stop()
         {
-            Console.WriteLine("[Two-Strat] Zatrzymuję moduł TwoWithStrategy");
+            Console.WriteLine("[Two] Zatrzymuję moduł Two");
+            // Odsubskrybowujemy się, żeby nie otrzymywać dalszych wiadomości
             _broker.Unsubscribe(this);
         }
 
         public void Handle(string message)
         {
-            _strategy.Process(message);
+            // Metoda wywoływana przez brokera, kiedy nadchodzi nowa wiadomość
+            Console.WriteLine($"[Two] Odebrałem wiadomość: {message}");
         }
     }
 }
