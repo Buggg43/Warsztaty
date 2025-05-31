@@ -24,7 +24,7 @@ namespace Two
         public void Stop()
         {
             Console.WriteLine("[Two] Zatrzymuję moduł Two");
-            // Odsubskrybowujemy się, żeby nie otrzymywać dalszych wiadomości
+            // Odsubskrybowujemy
             _broker.Unsubscribe(this);
         }
 
